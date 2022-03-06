@@ -1,9 +1,60 @@
-let library = [];
+bookLibrary = new Library();
 
-let book_form = document.querySelector("form");
-book_form.style.visibility = "hidden";
+let bookForm = document.querySelector("form");
+bookForm.style.visibility = "hidden";
 const addNewBtn = document.getElementsByTagName("button")[0];
 addNewBtn.addEventListener('click',showTextFields);
+
+function Library() {
+    this.idx = 0;
+    this.books = [];
+    this.shelf = document.getElementsByClassName("library")[0];
+}
+
+Library.prototype.push = function(book) {
+    this.books.push(book);
+    this.renderBooks();
+    hideTextFields();
+}
+
+Library.prototype.removeBook = function(book) {
+    let bookIdx = 0;
+    for(bookIdx = 0; bookIdx < this.books.length; bookIdx++) {
+        if(this.books[bookIdx] == book) {
+            this.books.splice(bookIdx, 1);
+            break;
+        }
+    }
+    this.renderBooks();
+}
+
+Library.prototype.renderBooks = function() {
+    while(this.shelf.firstChild) {
+        this.shelf.removeChild(this.shelf.firstChild);
+    }
+
+    for(let i = 0; i < this.books.length; i++){
+        this.renderABook(this.books[i], i);
+    }
+}
+
+Library.prototype.renderABook = function(book, idx) {
+    let listItem = document.createElement("li");
+    listItem.id = idx;
+    const removeBtn = this.createRemoveBtn();
+    removeBtn.addEventListener('click', () => {
+        this.removeBook(book);
+    })
+    listItem.innerHTML = book.author + " " + book.title + " " + book.year + " " + book.genre + " ";
+    listItem.append(removeBtn);
+    this.shelf.appendChild(listItem);
+}
+
+Library.prototype.createRemoveBtn = function() {
+    const removeBtn = document.createElement('button');
+    removeBtn.textContent = 'Remove';
+    return removeBtn;
+}
 
 function Book(title, genre, year, author) {
     this.title = title;
@@ -15,28 +66,13 @@ function Book(title, genre, year, author) {
 }
 
 Book.prototype.changeStatus = function() {
-    if(this.isRead === false){
-        this.isRead = true;
-    } else {
-        this.isRead = false;
-    }
+    this.isRead = !this.isRead;
 }
 
-function addToLibrary(form) {
-    // adds book to library
-    library.push(new Book(form.title.value, form.genre.value, form.year.value, form.author.value));
-    hideTextFields(form);
-}
 
-function removeBookFromLibrary() {
-    // removes book from library
-}
-
-function displayLibrary(library) {
-    // loops thru library and displays the books
-    library.forEach(element => {
-        
-    });
+function submitNewBook(form) {
+    showTextFields();
+    bookLibrary.push(new Book(form.title.value, form.genre.value, form.year.value, form.author.value));
 }
 
 function showTextFields() {
@@ -47,7 +83,7 @@ function showTextFields() {
 
 function hideTextFields(form) {
     // clears and hides the form for adding books
-    form.reset();
+    form = document.querySelector("form");
     form.style.visibility = "hidden";
 
 }

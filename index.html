@@ -1,6 +1,12 @@
 <body>
     <h1>My library</h1>
 
+    <div>
+        <ol class="library">
+
+        </ol>
+    </div>
+
     <button id="new-book">New book</button><br><br>
     <form id="book-form">
         <label for="title">Title:</label>
@@ -11,11 +17,8 @@
         <input type="text" id="author" name="author"><t>
         <label for="year">Year:</label>
         <input type="text" id="year" name="year"><br><br>
-        <input type="button" name="button" value="Add" onclick=addToLibrary(this.form)><br><br>
+        <input type="button" name="button" value="Add" onclick=submitNewBook(this.form)><br><br>
     </form>
-
-    <div class="library">
-    </div>
 </body>
 
-<script src="/js/library_project/main.js"></script>
+<script src="/main.js"></script>
