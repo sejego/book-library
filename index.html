@@ -1,24 +1,32 @@
-<body>
-    <h1>My library</h1>
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="css/reset.css" rel="stylesheet" type="text/css" media="all">
+        <link href="css/main.css" rel="stylesheet" type="text/css" media="all">
+    </head>
 
-    <div>
-        <ol class="library">
+    <body>
+        <h1>My library</h1>
 
-        </ol>
-    </div>
+        <div>
+            <ol class="library">
 
-    <button id="new-book">New book</button><br><br>
-    <form id="book-form">
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title"><t>
-        <label for="genre">Genre:</label>
-        <input type="text" id="genre" name="genre"><t>
-        <label for="author">First name & last name:</label>
-        <input type="text" id="author" name="author"><t>
-        <label for="year">Year:</label>
-        <input type="text" id="year" name="year"><br><br>
-        <input type="button" name="button" value="Add" onclick=submitNewBook(this.form)><br><br>
-    </form>
-</body>
+            </ol>
+        </div>
 
-<script src="/main.js"></script>
+        <button id="new-book">New book</button><br><br>
+        <form id="book-form">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title"><t>
+            <label for="genre">Genre:</label>
+            <input type="text" id="genre" name="genre"><t>
+            <label for="author">First name & last name:</label>
+            <input type="text" id="author" name="author"><t>
+            <label for="year">Year:</label>
+            <input type="text" id="year" name="year"><br><br>
+            <input type="button" name="button" value="Add" onclick=submitNewBook(this.form)><br><br>
+        </form>
+    </body>
+</html>
+
+<script type="text/javascript" src="/main.js"></script>

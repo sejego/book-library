@@ -5,6 +5,7 @@ bookForm.style.visibility = "hidden";
 const addNewBtn = document.getElementsByTagName("button")[0];
 addNewBtn.addEventListener('click',showTextFields);
 
+
 function Library() {
     this.idx = 0;
     this.books = [];
@@ -39,20 +40,38 @@ Library.prototype.renderBooks = function() {
 }
 
 Library.prototype.renderABook = function(book, idx) {
+
     let listItem = document.createElement("li");
+    let statusText = "Not finished";
+
     listItem.id = idx;
     const removeBtn = this.createRemoveBtn();
     removeBtn.addEventListener('click', () => {
         this.removeBook(book);
     })
-    listItem.innerHTML = book.author + " " + book.title + " " + book.year + " " + book.genre + " ";
+    const changeBtn = this.createChangeBtn();
+    changeBtn.addEventListener('click', () => {
+        book.changeStatus();
+        this.renderBooks();
+    })
+    if(book.isRead){
+        statusText = "Finished"
+    }
+    listItem.innerHTML = book.author + " " + book.title + " " + book.year + " " + book.genre + " " + statusText;
     listItem.append(removeBtn);
+    listItem.append(changeBtn);
     this.shelf.appendChild(listItem);
 }
 
 Library.prototype.createRemoveBtn = function() {
     const removeBtn = document.createElement('button');
     removeBtn.textContent = 'Remove';
+    return removeBtn;
+}
+
+Library.prototype.createChangeBtn = function() {
+    const removeBtn = document.createElement('button');
+    removeBtn.textContent = 'Change';
     return removeBtn;
 }
 
@@ -71,8 +90,21 @@ Book.prototype.changeStatus = function() {
 
 
 function submitNewBook(form) {
+    let book = new Book();
     showTextFields();
-    bookLibrary.push(new Book(form.title.value, form.genre.value, form.year.value, form.author.value));
+    if(isEmpty(form.title.value)){
+        book.title = "Unknown";
+    }
+    if(isEmpty(form.genre.value)){
+        book.genre = "Unknown";
+    }
+    if(isEmpty(form.year.value)){
+        book.year = "Unknown";
+    }
+    if(isEmpty(form.author.value)){
+        book.author = "Unknown";
+    }
+    bookLibrary.push(book);
 }
 
 function showTextFields() {
@@ -86,4 +118,8 @@ function hideTextFields(form) {
     form = document.querySelector("form");
     form.style.visibility = "hidden";
 
+}
+
+function isEmpty(str) {
+    return !str.trim().length;
 }
