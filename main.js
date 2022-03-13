@@ -105,11 +105,9 @@ Book.prototype.changeStatus = function() {
     this.isRead = !this.isRead;
 }
 
-
 function submitNewBook(form) {
 
     let book = new Book();
-    showTextFields();
     book.title = form.title.value;
     book.author = form.author.value;
     book.year = form.year.value;
@@ -126,6 +124,7 @@ function showTextFields() {
 function hideTextFields(form) {
     // clears and hides the form for adding books
     form = document.querySelector("form");
+    form.reset();
     form.style.visibility = "hidden";
 
 }
