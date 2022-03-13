@@ -10,35 +10,25 @@
 
         <div>
             <table class="library">
+                <col width="70px" />
+                <col width="70px" />
+                <col width="70px" />
+                <col width="70px" />
+                <col width="70px" />
+                <col width="70px" />
+                <col width="70px" />
                 <thead>
                   <tr>
                     <th>Title</th>
                     <th>Author</th>
                     <th>Genre</th>
                     <th>Year</th>
+                    <th>Status</th>
                     <th></th> <!-- For Change Status Button-->
-                    <th></th> <!-- For Remove Button-->
+                    <th></th> <!-- For Remove Buttonn-->
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Row 1 Value 1</td>
-                    <td>Row 1 Value 2</td>
-                    <td>Row 1 Value 3</td>
-                    <td>Row 1 Value 4</td>
-                  </tr>
-                  <tr>
-                    <td>Row 2 Value 1</td>
-                    <td>Row 2 Value 2</td>
-                    <td>Row 2 Value 3</td>
-                    <td>Row 2 Value 4</td>
-                  </tr>
-                  <tr>
-                    <td>Row 3 Value 1</td>
-                    <td>Row 3 Value 2</td>
-                    <td>Row 3 Value 3</td>
-                    <td>Row 3 Value 4</td>
-                  </tr>
                 </tbody>
               </table>
         </div>
@@ -61,7 +51,8 @@
                 <label for="year">Year:</label><br />
                 <input type="text" id="year" name="year"><br />
             </p>
-            <input type="button" name="button" value="Add" onclick=submitNewBook(this.form)><br /><br />
+            <input type="button" class="add-btn" name="button" value="Add" onclick=submitNewBook(this.form)><br /><br />
+            
         </form>
     </body>
 </html>
