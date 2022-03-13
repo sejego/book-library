@@ -178,12 +178,10 @@ to enable assigned methods */
 if(storageAvailable('localStorage')) {
     canStore = true;
     let books = JSON.parse(localStorage.getItem("books") || "[]");
-    console.log(books)
     for(let i = 0; i < books.length; i++) {
         bookLibrary.push(Object.assign(new Book, books[i]));
     }
 }
 
-console.log(bookLibrary);
 let bookForm = document.querySelector("form");
 bookForm.style.visibility = "hidden";
