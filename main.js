@@ -30,8 +30,12 @@ Library.prototype.removeBook = function(book) {
 }
 
 Library.prototype.renderBooks = function() {
-    while(this.shelf.firstChild) {
-        this.shelf.removeChild(this.shelf.firstChild);
+
+    // Remove rows while there are rows in the body
+    // of the table (only main ones)
+
+    while(this.shelf.rows.length != 1) {
+        this.shelf.deleteRow(1);
     }
 
     for(let i = 0; i < this.books.length; i++){
@@ -41,10 +45,17 @@ Library.prototype.renderBooks = function() {
 
 Library.prototype.renderABook = function(book, idx) {
 
-    let listItem = document.createElement("li");
     let statusText = "Not finished";
 
-    listItem.id = idx;
+    // add fixed number of current cells and assign a book ID to cell.
+
+    let row = this.shelf.insertRow(-1);
+    row.id = idx;
+
+    for(let i = 0; i < 6; i++) {
+        row.insertCell();
+    }
+
     const removeBtn = this.createRemoveBtn();
     removeBtn.addEventListener('click', () => {
         this.removeBook(book);
@@ -54,13 +65,17 @@ Library.prototype.renderABook = function(book, idx) {
         book.changeStatus();
         this.renderBooks();
     })
+
     if(book.isRead){
         statusText = "Finished"
     }
-    listItem.innerHTML = book.author + " " + book.title + " " + book.year + " " + book.genre + " " + statusText;
-    listItem.append(removeBtn);
-    listItem.append(changeBtn);
-    this.shelf.appendChild(listItem);
+
+    row.cells[0].innerHTML = book.title;
+    row.cells[1].innerHTML = book.author;
+    row.cells[2].innerHTML = book.genre;
+    row.cells[3].innerHTML = book.year;
+    row.cells[4].appendChild(changeBtn);
+    row.cells[5].appendChild(removeBtn);
 }
 
 Library.prototype.createRemoveBtn = function() {
@@ -75,7 +90,7 @@ Library.prototype.createChangeBtn = function() {
     return removeBtn;
 }
 
-function Book(title, genre, year, author) {
+function Book(title = "Untitled", genre = "Unknown", year = "Unknown", author = "Unknown") {
     this.title = title;
     this.genre = genre;
     this.year = year;
@@ -92,8 +107,10 @@ Book.prototype.changeStatus = function() {
 function submitNewBook(form) {
     let book = new Book();
     showTextFields();
+    /*
+    console.log(form)
     if(isEmpty(form.title.value)){
-        book.title = "Unknown";
+        book.title = "Untitled";
     }
     if(isEmpty(form.genre.value)){
         book.genre = "Unknown";
@@ -103,7 +120,11 @@ function submitNewBook(form) {
     }
     if(isEmpty(form.author.value)){
         book.author = "Unknown";
-    }
+    }*/
+    book.title = form.title.value;
+    book.author = form.author.value;
+    book.year = form.year.value;
+    book.genre = form.genre.value;
     bookLibrary.push(book);
 }
 

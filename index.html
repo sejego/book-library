@@ -2,29 +2,66 @@
 <html>
     <head>
         <link href="css/reset.css" rel="stylesheet" type="text/css" media="all">
-        <link href="css/main.css" rel="stylesheet" type="text/css" media="all">
+        <link href="css/almond.css" rel="stylesheet" type="text/css" media="all">
     </head>
 
     <body>
         <h1>My library</h1>
 
         <div>
-            <ol class="library">
-
-            </ol>
+            <table class="library">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Genre</th>
+                    <th>Year</th>
+                    <th></th> <!-- For Change Status Button-->
+                    <th></th> <!-- For Remove Button-->
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Row 1 Value 1</td>
+                    <td>Row 1 Value 2</td>
+                    <td>Row 1 Value 3</td>
+                    <td>Row 1 Value 4</td>
+                  </tr>
+                  <tr>
+                    <td>Row 2 Value 1</td>
+                    <td>Row 2 Value 2</td>
+                    <td>Row 2 Value 3</td>
+                    <td>Row 2 Value 4</td>
+                  </tr>
+                  <tr>
+                    <td>Row 3 Value 1</td>
+                    <td>Row 3 Value 2</td>
+                    <td>Row 3 Value 3</td>
+                    <td>Row 3 Value 4</td>
+                  </tr>
+                </tbody>
+              </table>
         </div>
-
-        <button id="new-book">New book</button><br><br>
+        <br />
+        <button id="new-book">New book</button><br /><br />
         <form id="book-form">
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title"><t>
-            <label for="genre">Genre:</label>
-            <input type="text" id="genre" name="genre"><t>
-            <label for="author">First name & last name:</label>
-            <input type="text" id="author" name="author"><t>
-            <label for="year">Year:</label>
-            <input type="text" id="year" name="year"><br><br>
-            <input type="button" name="button" value="Add" onclick=submitNewBook(this.form)><br><br>
+            <p>
+                <label for="title">Title:</label><br />
+                <input type="text" id="title" name="title"><br />
+            </p>
+            <p>
+                <label for="genre">Genre:</label><br />
+                <input type="text" id="genre" name="genre"><br />
+            </p>
+            <p>
+                <label for="author">First name & last name:</label><br />
+                <input type="text" id="author" name="author"><br />
+            </p>
+            <p>
+                <label for="year">Year:</label><br />
+                <input type="text" id="year" name="year"><br />
+            </p>
+            <input type="button" name="button" value="Add" onclick=submitNewBook(this.form)><br /><br />
         </form>
     </body>
 </html>
