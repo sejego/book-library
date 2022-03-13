@@ -2,11 +2,11 @@
 <html>
     <head>
         <link href="css/reset.css" rel="stylesheet" type="text/css" media="all">
-        <link href="css/almond.css" rel="stylesheet" type="text/css" media="all">
+        <link href="css/almond.min.css" rel="stylesheet" type="text/css" media="all">
     </head>
 
     <body>
-        <h1>My library</h1>
+        <h1>Fancy Pantsy JavaScript Library</h1>
 
         <div>
             <table class="library">
@@ -33,7 +33,7 @@
               </table>
         </div>
         <br />
-        <button id="new-book">New book</button><br /><br />
+        <input type="button" class="new-book-btn" name="button" value="New book" onclick=showFormFields()><br /><br />
         <form id="book-form">
             <p>
                 <label for="title">Title:</label><br />
@@ -44,15 +44,20 @@
                 <input type="text" id="genre" name="genre"><br />
             </p>
             <p>
-                <label for="author">First name & last name:</label><br />
+                <label for="author">Author:</label><br />
                 <input type="text" id="author" name="author"><br />
             </p>
             <p>
                 <label for="year">Year:</label><br />
-                <input type="text" id="year" name="year"><br />
+                <!-- <input type="number" id="year" name="year" min="0" max="2022" step="1" value="2016" /> -->
+                <input type="number" id="year" name="year"><br />                
+            </p>
+            <p>
+                <input type="checkbox" id="checkbox" checked> 
+                <label for="checkbox">Read?</label><br />
             </p>
             <input type="button" class="add-btn" name="button" value="Add" onclick=submitNewBook(this.form)><t />
-            <input type="button" class="cancel-btn" name="button" value="Cancel" onclick=hideTextFields()><br />
+            <input type="button" class="cancel-btn" name="button" value="Cancel" onclick=hideFormFields()><br />
         </form>
     </body>
 </html>
