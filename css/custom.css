@@ -1,0 +1,21 @@
+#author-details {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    gap: 0.25rem;
+  }
+  
+  #author-details p {
+    margin: 0;
+  }
+  
+  #author-details img {
+    height: 1rem;
+    width: 1rem;
+    margin-top: .1875rem;
+    opacity: 0.5;
+  }
+  
+  #author-details img:hover {
+    opacity: 1;
+  }
