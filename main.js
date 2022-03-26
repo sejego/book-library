@@ -1,7 +1,6 @@
 /* Library class to hold Book objects, remove them and render them in DOM */
 
 function Library() {
-    this.idx = 0;
     this.books = [];
     this.shelf = document.getElementsByClassName("library")[0];
 }
@@ -107,7 +106,6 @@ function Book(title = "Untitled", genre = "Unknown", year = "Unknown", author = 
     this.year = year;
     this.isRead = false;
     this.author = author;
-    this.isRead = false;
 }
 
 Book.prototype.changeStatus = function() {
